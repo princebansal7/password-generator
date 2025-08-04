@@ -104,14 +104,14 @@ function App() {
                     </div>
                 </div>
                 <footer className="max-w-md mx-auto mt-8 px-6 py-4 rounded-xl bg-gray-800 text-gray-300 text-center shadow-md">
+                    © {new Date().getFullYear()} ·{" "}
                     <a
-                        href="https://princebansal.tech"
+                        href="https://princebansal.in"
                         className="text-blue-400 hover:underline"
                         target="_blank"
                     >
-                        princebansal.tech
+                        princebansal.in
                     </a>{" "}
-                    © {new Date().getFullYear()}
                 </footer>
             </div>
         </>
