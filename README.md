@@ -1,5 +1,6 @@
 ## Random Password Generator
 
+-  CICD demo | [YT](https://youtu.be/qS6WeejgsUk)
 -  To run locally
    ```sh
    cd password-generator
