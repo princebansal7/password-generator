@@ -2,22 +2,46 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 function App() {
     const [length, setLength] = useState(7);
-    const [includeNum, setIncludeNum] = useState(false);
-    const [includeSpecialChars, setIncludeSpecialChars] = useState(false);
+    const [includeNum, setIncludeNum] = useState(true);
+    const [includeSpecialChars, setIncludeSpecialChars] = useState(true);
     const [password, setPassword] = useState("");
     const passwordInputRef = useRef(null);
 
     // function to generator random password
     const passwordGenerator = useCallback(() => {
-        let pass = "";
-        let tempPass = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        if (includeNum) tempPass += "0123456789";
-        if (includeSpecialChars) tempPass += "!@#$%^&*_+-=|<>?`~";
-        for (let i = 1; i <= length; i++) {
-            const index = Math.floor(Math.random() * tempPass.length + 1);
-            pass += tempPass.charAt(index);
+        const upperLower =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        const numbers = "0123456789";
+        const specials = "!@#$%^&*_+-=|<>?`~";
+        let allChars = upperLower;
+        let requiredChars = "";
+        if (includeNum) {
+            allChars += numbers;
+            requiredChars +=
+                numbers[Math.floor(Math.random() * numbers.length)];
         }
-        setPassword(pass);
+        if (includeSpecialChars) {
+            allChars += specials;
+            requiredChars +=
+                specials[Math.floor(Math.random() * specials.length)];
+        }
+        // Ensure at least 1 letter character too
+        requiredChars +=
+            upperLower[Math.floor(Math.random() * upperLower.length)];
+        // Fill the rest of the password length
+        let remainingLength = length - requiredChars.length;
+        let remainingChars = "";
+        for (let i = 0; i < remainingLength; i++) {
+            remainingChars +=
+                allChars[Math.floor(Math.random() * allChars.length)];
+        }
+        // Combine and shuffle the required and remaining characters
+        let finalPassword = (requiredChars + remainingChars)
+            .split("")
+            .sort(() => Math.random() - 0.5)
+            .join("");
+
+        setPassword(finalPassword);
     }, [length, includeSpecialChars, includeNum]);
 
     const copyPasswordToClipboard = useCallback(() => {
