@@ -28,6 +28,11 @@ jobs:
           git fetch origin gh-pages
           git checkout gh-pages || git checkout --orphan gh-pages
 
+      - name: Set git user (Bot)
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
       - name: Remove everything except CNAME
         run: |
           find . -mindepth 1 -maxdepth 1 ! -name 'CNAME' ! -name '.git' -exec rm -rf {} +
