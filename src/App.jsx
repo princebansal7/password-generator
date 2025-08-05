@@ -5,6 +5,7 @@ function App() {
     const [includeNum, setIncludeNum] = useState(true);
     const [includeSpecialChars, setIncludeSpecialChars] = useState(true);
     const [password, setPassword] = useState("");
+    const [lengthInput, setLengthInput] = useState(String(length));
     const passwordInputRef = useRef(null);
 
     // function to generator random password
@@ -54,6 +55,11 @@ function App() {
         passwordGenerator();
     }, [length, includeSpecialChars, includeNum, passwordGenerator]);
 
+    // when user updates length
+    useEffect(() => {
+        setLengthInput(String(length));
+    }, [length]);
+
     return (
         <>
             <div className="max-w-md mx-auto shadow-md rounded-2xl bg-gray-900 px-6 py-8 my-16 text-white">
@@ -88,10 +94,35 @@ function App() {
                                 setLength(Number(e.target.value));
                             }}
                         />
-                        <label className="text-lg text-blue-300 font-medium">
-                            Length <span className="font-bold">{length}</span>
-                        </label>
                     </div>
+                    <div className="flex justify-between mb-0 text-sm text-blue-300 px-1">
+                        <span>Min: 7</span>
+                        <span>Max: 69</span>
+                    </div>
+                    <input
+                        type="text"
+                        value={lengthInput}
+                        className="w-20 px-3 py-1 my-0 text-center text-blue-900 bg-white rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onChange={e => {
+                            const val = e.target.value;
+                            setLengthInput(val);
+                            const num = Number(val);
+                            if (!isNaN(num) && num >= 7 && num <= 69) {
+                                setLength(num);
+                            }
+                        }}
+                        onBlur={() => {
+                            const num = Number(lengthInput);
+                            if (isNaN(num) || num < 7) {
+                                setLength(7);
+                            } else if (num > 69) {
+                                setLength(69);
+                            }
+                        }}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        placeholder="Length"
+                    />
                     <div className="flex items-center gap-3">
                         <input
                             type="checkbox"
