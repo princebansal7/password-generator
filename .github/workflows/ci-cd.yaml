@@ -1,0 +1,55 @@
+name: Deploy to gh-pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Checkout gh-pages branch
+        run: |
+          git fetch origin gh-pages
+          git checkout gh-pages || git checkout --orphan gh-pages
+
+      - name: Remove everything except CNAME
+        run: |
+          find . -mindepth 1 -maxdepth 1 ! -name 'CNAME' ! -name '.git' -exec rm -rf {} +
+          git add -A
+          git commit -m "removed old build" || echo "Nothing to commit"
+
+      - name: Switch back to main and rebuild
+        run: |
+          git checkout main
+          npm run build
+
+      - name: Switch to gh-pages and copy new build
+        run: |
+          git checkout gh-pages
+          cp -r dist/* .
+          rm -rf dist node_modules
+
+      - name: Commit and push new build
+        run: |
+          git add -A
+          git commit -m "Deploying new build" || echo "Nothing to commit"
+          git push origin gh-pages
