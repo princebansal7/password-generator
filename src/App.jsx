@@ -63,12 +63,12 @@ function App() {
     return (
         <>
             <div className="max-w-md mx-auto shadow-md rounded-2xl bg-gray-900 px-6 py-8 my-16 text-white">
-                <h1 className="text-center text-4xl mb-6 text-blue-200">
+                <h1 className="text-center text-3xl mb-6 text-blue-300">
                     Password Generator
                 </h1>
                 <div className="flex shadow text-3xl rounded-full overflow-hidden mb-6">
                     <input
-                        className="outline-none w-full py-3 px-5 text-green-700 bg-white text-xl rounded-l-full"
+                        className="outline-none w-full py-3 px-5 text-green-600 bg-white text-2xl rounded-l-full"
                         type="text"
                         value={password}
                         placeholder="xg@3k!l"
@@ -158,7 +158,7 @@ function App() {
                         </label>
                     </div>
                 </div>
-                <footer className="max-w-md mx-auto mt-8 px-6 py-4 rounded-xl bg-gray-800 text-gray-300 text-center shadow-md">
+                <footer className="max-w-md mx-auto mt-8 px-6 py-4 rounded-xl bg-gray-800 text-blue-400 text-center shadow-2xl">
                     © {new Date().getFullYear()} ·{" "}
                     <a
                         href="https://princebansal.in"
