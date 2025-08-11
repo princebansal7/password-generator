@@ -121,6 +121,7 @@ function App() {
                     <button
                         onClick={copyPasswordToClipboard}
                         className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-r-full transition-colors duration-200 text-lg font-semibold"
+                        type="button"
                     >
                         Copy
                     </button>
@@ -249,6 +250,7 @@ function App() {
                         href="https://princebansal.in"
                         className="text-blue-400 hover:underline"
                         target="_blank"
+                        rel="noopener noreferrer"
                     >
                         princebansal.in
                     </a>{" "}
