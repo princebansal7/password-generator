@@ -9,6 +9,9 @@
    ```
 - To run locally using docker
   ```sh
-  docker run --rm -d -p 8080:80 princebansal7/password-generator:v2
+  # Old UI
+  docker run --rm -d -p 8080:80 princebansal7/password-generator:v3 
+  # New UI
+  docker run --rm -d -p 8080:80 princebansal7/password-generator:v4
   ```
   then visit: [http://localhost:8080](http://localhost:8080)
