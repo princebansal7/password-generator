@@ -12,6 +12,6 @@
   # Old UI
   docker run --rm -d -p 8080:80 princebansal7/password-generator:v3 
   # New UI
-  docker run --rm -d -p 8080:80 princebansal7/password-generator:v5
+  docker run --rm -d -p 8080:80 princebansal7/password-generator:v6
   ```
   then visit: [http://localhost:8080](http://localhost:8080)
