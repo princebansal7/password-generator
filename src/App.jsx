@@ -226,13 +226,13 @@ function App() {
                             <div className="flex items-center bg-slate-800/60 backdrop-blur-sm rounded-2xl p-1 border border-slate-500/50 transition-all duration-300 hover:border-slate-400/70 hover:shadow-lg">
                                 <input
                                     ref={passwordInputRef}
-                                    className="flex-1 bg-transparent text-white text-lg font-mono px-4 py-3 outline-none placeholder-slate-300 placeholder:text-sm"
+                                    className="flex-1 bg-transparent text-white text-lg font-mono px-4 py-3 outline-none placeholder-slate-300 placeholder:text-sm min-w-0"
                                     type="text"
                                     value={password}
                                     placeholder="Password will appear here..."
                                     readOnly
                                 />
-                                <div className="flex items-center gap-2 pr-2">
+                                <div className="flex items-center gap-2 pr-2 flex-nowrap min-w-0">
                                     {/* Reload Button */}
                                     <button
                                         onClick={handleReloadPassword}
@@ -362,7 +362,7 @@ function App() {
                                         setLength(Math.max(7, length - 1))
                                     }
                                     disabled={length <= 7}
-                                    className="w-8 h-8 rounded-full bg-slate-500 hover:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center text-white font-bold"
+                                    className="w-8 h-8 pop-btn flex items-center justify-center text-white font-bold"
                                 >
                                     -
                                 </button>
@@ -399,7 +399,7 @@ function App() {
                                         setLength(Math.min(69, length + 1))
                                     }
                                     disabled={length >= 69}
-                                    className="w-8 h-8 rounded-full bg-slate-500 hover:bg-slate-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center text-white font-bold"
+                                    className="w-8 h-8 pop-btn flex items-center justify-center text-white font-bold"
                                 >
                                     +
                                 </button>

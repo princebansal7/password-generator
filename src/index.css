@@ -1,3 +1,26 @@
+/* Pop-out button style for generate, plus, minus */
+.pop-btn {
+    background: linear-gradient(90deg, #3a3f7d, #4f5ba6);
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 16px 0 rgba(58, 63, 125, 0.18),
+        0 1.5px 4px 0 rgba(79, 91, 166, 0.12);
+    border: none;
+    border-radius: 9999px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.pop-btn:hover:not(:disabled) {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 24px 0 rgba(58, 63, 125, 0.22),
+        0 2px 8px 0 rgba(79, 91, 166, 0.16);
+}
+.pop-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+.pop-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 @import "tailwindcss";
 
 @keyframes fadeInUp {
@@ -84,7 +107,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    background: linear-gradient(135deg, #232b4d 0%, #3a3f7d 50%, #4f5ba6 100%);
     min-height: 100vh;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         sans-serif;
@@ -131,7 +154,7 @@ input[type="range"]::before {
     left: 0;
     height: 100%;
     border-radius: 4px;
-    background: linear-gradient(90deg, #64748b, #94a3b8);
+    background: linear-gradient(90deg, #3a3f7d, #4f5ba6);
     transition: width 0.3s ease;
     width: calc(
         (var(--value, 0) - var(--min, 0)) / (var(--max, 100) - var(--min, 0)) *
@@ -145,7 +168,7 @@ input[type="range"]::-webkit-slider-thumb {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #64748b, #94a3b8);
+    background: linear-gradient(135deg, #3a3f7d, #4f5ba6);
     cursor: pointer;
     border: 3px solid #334155;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -157,14 +180,14 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-thumb:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, #94a3b8, #cbd5e1);
+    background: linear-gradient(135deg, #4f5ba6, #a5b4fc);
 }
 
 input[type="range"]::-moz-range-thumb {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #64748b, #94a3b8);
+    background: linear-gradient(135deg, #3a3f7d, #4f5ba6);
     cursor: pointer;
     border: 3px solid #334155;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -174,7 +197,7 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-moz-range-thumb:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, #94a3b8, #cbd5e1);
+    background: linear-gradient(135deg, #4f5ba6, #a5b4fc);
 }
 
 /* Custom checkbox */
@@ -192,7 +215,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    background: linear-gradient(135deg, #64748b, #94a3b8);
+    background: linear-gradient(135deg, #3a3f7d, #4f5ba6);
     border-color: transparent;
     animation: pulse 0.3s ease;
 }
@@ -215,10 +238,33 @@ input[type="checkbox"]:hover {
 
 /* Glass morphism effect */
 .glass {
-    background: rgba(51, 65, 85, 0.2);
+    background: rgba(58, 63, 125, 0.18);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(100, 116, 139, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(79, 91, 166, 0.25);
+    box-shadow: 0 8px 32px rgba(58, 63, 125, 0.18);
+    /* Pop-out button style for generate, plus, minus */
+    .pop-btn {
+        background: linear-gradient(90deg, #3a3f7d, #4f5ba6);
+        color: #fff;
+        font-weight: bold;
+        box-shadow: 0 4px 16px 0 rgba(58, 63, 125, 0.18),
+            0 1.5px 4px 0 rgba(79, 91, 166, 0.12);
+        border: none;
+        border-radius: 9999px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pop-btn:hover:not(:disabled) {
+        transform: scale(1.08) translateY(-2px);
+        box-shadow: 0 8px 24px 0 rgba(58, 63, 125, 0.22),
+            0 2px 8px 0 rgba(79, 91, 166, 0.16);
+    }
+    .pop-btn:active:not(:disabled) {
+        transform: scale(0.98);
+    }
+    .pop-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 }
 
 /* Floating animation */
